@@ -1,12 +1,18 @@
 package controller;
 
+import data.GebruikerDbUtil;
+import model.Gebruiker;
+
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.Statement;
+import java.util.List;
 import java.sql.ResultSet;
 
 import javax.annotation.Resource;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -25,8 +31,24 @@ public class GebruikerServlet extends HttpServlet {
 	@Resource(name="jdbc/credito")
 	private DataSource dataSource;
 	
+	private GebruikerDbUtil gebrDB;
+	
+	@Override
+	public void init() throws ServletException {
+		super.init();
+		
+		//create our user db util and pass in the Connection-pool / dataSource
+		try{
+			gebrDB = new GebruikerDbUtil(dataSource);
+		}catch(Exception exc){
+			throw new ServletException(exc);
+		}
+	}
+	
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// test dataBase
+		/*
+		 * // test dataBase
 		
 		// setup writer
 		PrintWriter out = response.getWriter();
@@ -62,9 +84,40 @@ public class GebruikerServlet extends HttpServlet {
 		catch(Exception exc){
 			exc.printStackTrace();
 		}
+		 */
+		
+		//get and print List
+		lijst(request, response);
+		
+		
 	}
 
 	
+	private void lijst(HttpServletRequest request, HttpServletResponse response)  {
+		
+		
+		try {
+			// get and print List
+			List<Gebruiker>  gebrLijst = gebrDB.getGebruikers();
+			
+			// voeg gebruiker Lijst toe aan de request
+			request.setAttribute("gebrLijst", gebrLijst);
+			
+			//send to JSP
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/lijst-gebruikers.jsp");
+			dispatcher.forward(request, response);
+			
+		} catch (Exception e) {
+			// error afhandelen
+			
+			// error uit printen
+				//e.printStackTrace();
+			// response.sendRedirect("error.jsp");
+		}
+		
+	}
+
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);

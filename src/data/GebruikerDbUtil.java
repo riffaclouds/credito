@@ -44,10 +44,14 @@ private DataSource dataSource;
 				
 				//get data from the current row
 				int id = myRs.getInt("id");
-				String firstName = myRs.getString("first_name");
-				String lastName = myRs.getString("last_name");
-				String email = myRs.getString("email");
-				String password = myRs.getString("password");
+				int idAfdeling = myRs.getInt("id_afdeling");
+				int idRol = myRs.getInt("id_rol");
+				String voorNaam = myRs.getString("voor_naam");
+				String tussenvoegsel = myRs.getString("tussenvoegsel");
+				String achterNaam = myRs.getString("achter_naam");
+				String email = myRs.getString("achter_naam");
+				double salaris = myRs.getDouble("id");
+				int actief = myRs.getInt("id");
 				
 				//plaatst de waardes die zojuist zijn opgehaald in gebruiker lg(lijst gebruiker)
 				Gebruiker lg = new Gebruiker(id, idAfdeling, idRol,voorNaam, tussenvoegsel, achterNaam,
