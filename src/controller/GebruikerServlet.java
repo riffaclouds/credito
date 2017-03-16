@@ -5,12 +5,15 @@ import model.Gebruiker;
 
 
 import java.io.IOException;
-import java.io.PrintWriter;
+/*
+ * import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.Statement;
-import java.util.List;
 import java.sql.ResultSet;
+ */
 
+
+import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -23,7 +26,7 @@ import javax.sql.DataSource;
 /**
  * Servlet implementation class GebruikerServlet
  */
-@WebServlet("/GebruikerServlet")
+@WebServlet("/gebruiker")
 public class GebruikerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -57,10 +60,14 @@ public class GebruikerServlet extends HttpServlet {
 		Connection myConn = null;
 		Statement myStmt = null;
 		ResultSet myRs = null;
+		 */
+		
 		
 		
 				
 		try{
+			/*
+			 * 
 			// setup connection
 			myConn = dataSource.getConnection();
 			
@@ -80,44 +87,34 @@ public class GebruikerServlet extends HttpServlet {
 				out.println(voorNaam + " " + achterNaam + " " + email);
 			}
 			
+			 */
+			
+			//get and print List
+			lijst(request, response);
+			
 		}
 		catch(Exception exc){
 			exc.printStackTrace();
 		}
-		 */
-		
-		//get and print List
-		lijst(request, response);
-		
-		
+		 
+	
 	}
 
 	
-	private void lijst(HttpServletRequest request, HttpServletResponse response)  {
+	private void lijst(HttpServletRequest request, HttpServletResponse response) throws Exception  {
+		// get and print List
+		List<Gebruiker>  gebrLijst = gebrDB.getGebruikers();
 		
+		// voeg gebruiker Lijst toe aan de request
+		request.setAttribute("gebrLijst", gebrLijst);
 		
-		try {
-			// get and print List
-			List<Gebruiker>  gebrLijst = gebrDB.getGebruikers();
-			
-			// voeg gebruiker Lijst toe aan de request
-			request.setAttribute("gebrLijst", gebrLijst);
-			
-			//send to JSP
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/lijst-gebruikers.jsp");
-			dispatcher.forward(request, response);
-			
-		} catch (Exception e) {
-			// error afhandelen
-			
-			// error uit printen
-				//e.printStackTrace();
-			// response.sendRedirect("error.jsp");
-		}
+		//send to JSP
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/lijst-gebruikers.jsp");
+		dispatcher.forward(request, response);		
 		
 	}
 
-
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);

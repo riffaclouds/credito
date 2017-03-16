@@ -5,7 +5,7 @@ import javax.sql.DataSource;
 import model.Gebruiker;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
+//import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -32,7 +32,7 @@ private DataSource dataSource;
 			myConn = dataSource.getConnection();
 			
 			//make statement
-			String sql = "select * from user where active='1' order by last_name";
+			String sql = "select * from gebruiker";
 			
 			myStmt = myConn.createStatement();
 			//execute query
@@ -43,15 +43,15 @@ private DataSource dataSource;
 			while(myRs.next()){
 				
 				//get data from the current row
-				int id = myRs.getInt("id");
+				int id = myRs.getInt("id_gebruiker");
 				int idAfdeling = myRs.getInt("id_afdeling");
 				int idRol = myRs.getInt("id_rol");
 				String voorNaam = myRs.getString("voor_naam");
 				String tussenvoegsel = myRs.getString("tussenvoegsel");
 				String achterNaam = myRs.getString("achter_naam");
 				String email = myRs.getString("achter_naam");
-				double salaris = myRs.getDouble("id");
-				int actief = myRs.getInt("id");
+				double salaris = myRs.getDouble("salaris");
+				int actief = myRs.getInt("actief");
 				
 				//plaatst de waardes die zojuist zijn opgehaald in gebruiker lg(lijst gebruiker)
 				Gebruiker lg = new Gebruiker(id, idAfdeling, idRol,voorNaam, tussenvoegsel, achterNaam,

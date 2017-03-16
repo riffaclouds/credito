@@ -1,5 +1,5 @@
 <!-- import the header -->
-<%@ include file="loginPlay.jsp" %>
+<%@ include file="header.jsp" %>
 
 <!DOCTYPE html">
 <html>
@@ -8,6 +8,7 @@
 </head>
 <body>
 	<h1 style="text-align: center;">Main page</h1>
+	<h1 style="text-align: center;">from the "real" Credito app!</h1>
 
 	<br><br><br>
 	

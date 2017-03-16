@@ -10,6 +10,7 @@ public class Gebruiker {
 	private String tussenvoegsel;
 	private String achterNaam;
 	private String email;
+	private String password;
 	private double salaris;
 	private int actief;
 	
@@ -94,6 +95,14 @@ public class Gebruiker {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public double getSalaris() {

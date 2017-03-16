@@ -1,0 +1,21 @@
+#userTable{
+    margin-left: 10%;
+	padding-top: 30px;
+    padding-left: 150px;
+}
+
+#userTableButtons{
+	padding-left: 200px;
+	
+}
+
+table {
+    border-collapse: collapse;
+      
+    
+}
+
+td, th {
+    border: 2px solid black;
+}
+

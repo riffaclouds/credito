@@ -1,5 +1,5 @@
 <!-- import the header -->
-
+<%@ include file="header.jsp" %>
 
 <!DOCTYPE html>
 <html>
@@ -12,7 +12,7 @@
 		<h1>Gebruikers overzicht</h1>
 		<!-- print the list -->
 		<div id="userTable">
-		<table id="">
+		<table id="table">
 			<tr>
 			
 				<!-- 
@@ -57,11 +57,12 @@
 			
 			<tr>
 				<td>${gebruiker.id}</td>
+				<td>${gebruiker.idAfdeling}</td>
 				<td>${gebruiker.idRol}</td>
 				<td>${gebruiker.voorNaam}</td>
 				
 				<td>${gebruiker.tussenvoegsel}</td>
-				<td>${gebruiker.achternaam}</td>
+				<td>${gebruiker.achterNaam}</td>
 				<td>${gebruiker.email}</td>
 				<td>${gebruiker.salaris}</td>
 				<td>${gebruiker.actief}</td>
