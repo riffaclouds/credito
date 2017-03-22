@@ -32,7 +32,12 @@ private DataSource dataSource;
 			myConn = dataSource.getConnection();
 			
 			//make statement
-			String sql = "select * from gebruiker";
+			String sql = "SELECT "
+					+ "id_gebruiker, voor_naam, tussenvoegsel, achter_naam, email, rol, afdeling_naam, organisatie_naam "
+					+ "FROM gebruiker "
+					+ "JOIN afdeling ON gebruiker.id_afdeling = afdeling.id_afdeling "
+					+ "JOIN organisatie ON afdeling.id_organisatie = organisatie.id_organisatie "
+					+ "JOIN rol ON gebruiker.id_rol = rol.id_rol";
 			
 			myStmt = myConn.createStatement();
 			//execute query
@@ -44,18 +49,15 @@ private DataSource dataSource;
 				
 				//get data from the current row
 				int id = myRs.getInt("id_gebruiker");
-				int idAfdeling = myRs.getInt("id_afdeling");
-				int idRol = myRs.getInt("id_rol");
+				String organisatie = myRs.getString("organisatie_naam");
 				String voorNaam = myRs.getString("voor_naam");
 				String tussenvoegsel = myRs.getString("tussenvoegsel");
 				String achterNaam = myRs.getString("achter_naam");
-				String email = myRs.getString("achter_naam");
-				double salaris = myRs.getDouble("salaris");
-				int actief = myRs.getInt("actief");
+				String email = myRs.getString("email");
+				String rol = myRs.getString("rol");
 				
 				//plaatst de waardes die zojuist zijn opgehaald in gebruiker lg(lijst gebruiker)
-				Gebruiker lg = new Gebruiker(id, idAfdeling, idRol,voorNaam, tussenvoegsel, achterNaam,
-						email, salaris, actief);
+				Gebruiker lg = new Gebruiker(id, voorNaam, tussenvoegsel, achterNaam, email, organisatie, rol);
 				
 				//add the user object to the list
 				gebruikers.add(lg);

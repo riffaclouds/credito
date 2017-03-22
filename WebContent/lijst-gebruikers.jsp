@@ -15,27 +15,12 @@
 		<table id="table">
 			<tr>
 			
-				<!-- 
-				private int id;
-				private int idAfdeling;
-				private int idRol;
-				private String voorNaam;
-				private String tussenvoegsel;
-				private String achterNaam;
-				private String email;
-				private double salaris;
-				private int actief;
-			 -->
 				<th>id</th>
-				<th>afdeling id</th>
-				<th>id rol</th>
-				<th>voor naam</th>
+				<th>Org</th>
+				<th>Naam</th>
+				<th>E-mail</th>
+				<th>Rol</th>
 				
-				<th>tussenvoegsel</th>
-				<th>achter naam</th>
-				<th>email</th>
-				<th>salaris</th>
-				<th>actief</th>
 				<th>actie(id)</th>
 				
 			</tr>
@@ -57,15 +42,13 @@
 			
 			<tr>
 				<td>${gebruiker.id}</td>
-				<td>${gebruiker.idAfdeling}</td>
-				<td>${gebruiker.idRol}</td>
-				<td>${gebruiker.voorNaam}</td>
+				<td>${gebruiker.organisatie}</td>
 				
-				<td>${gebruiker.tussenvoegsel}</td>
-				<td>${gebruiker.achterNaam}</td>
+				<td>${gebruiker.voorNaam} 				
+				${gebruiker.tussenvoegsel} 
+				${gebruiker.achterNaam}</td>
 				<td>${gebruiker.email}</td>
-				<td>${gebruiker.salaris}</td>
-				<td>${gebruiker.actief}</td>
+				<td>${gebruiker.rol}</td>
 				
 				<td><a href="${updateURL}">Update</a> | 
 				<a href="${deleteURL}" onclick="if (!(confirm('Weet u zeker dat u deze medewerker wilt verwijderen?'))) return false">Delete</a> </td>

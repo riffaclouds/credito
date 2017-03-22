@@ -10,10 +10,27 @@ public class Gebruiker {
 	private String tussenvoegsel;
 	private String achterNaam;
 	private String email;
-	private String password;
+	private String wachtwoord;
 	private double salaris;
 	private int actief;
 	
+	// informatie uit andere DB tabellen
+	private String organisatie;
+	private String afdeling;
+	private String rol;
+	
+	// Constructor die word gebruikt voor de Gebruikers overzicht
+	public Gebruiker(int id, String voorNaam, String tussenvoegsel, String achterNaam, String email, String organisatie,
+			String rol) {
+		this.id = id;
+		this.voorNaam = voorNaam;
+		this.tussenvoegsel = tussenvoegsel;
+		this.achterNaam = achterNaam;
+		this.email = email;
+		this.organisatie = organisatie;
+		this.rol = rol;
+	}
+
 	// deze constructor word gebruikt wanneer een gebruiker al een id heeft
 	public Gebruiker(int id, int idAfdeling, int idRol, String voorNaam, String tussenvoegsel, String achterNaam,
 			String email, double salaris, int actief) {
@@ -29,21 +46,23 @@ public class Gebruiker {
 	}
 	
 	// deze constructor word gebruikt wanneer een gebruiker nog geen id heeft
+	// bijvoorbeeld bij het aanmaken van een nieuwe gebruiker
 	public Gebruiker(int idAfdeling, int idRol, String voorNaam, String tussenvoegsel, String achterNaam, String email,
-			double salaris, int actief) {
+			String wachtwoord, double salaris, int actief) {
 		this.idAfdeling = idAfdeling;
 		this.idRol = idRol;
 		this.voorNaam = voorNaam;
 		this.tussenvoegsel = tussenvoegsel;
 		this.achterNaam = achterNaam;
 		this.email = email;
+		this.wachtwoord = wachtwoord;
 		this.salaris = salaris;
 		this.actief = actief;
-	}
+	}	
 
 	public int getId() {
 		return id;
-	}
+	}	
 
 	public void setId(int id) {
 		this.id = id;
@@ -97,12 +116,12 @@ public class Gebruiker {
 		this.email = email;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getWachtwoord() {
+		return wachtwoord;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setWachtwoord(String wachtwoord) {
+		this.wachtwoord = wachtwoord;
 	}
 
 	public double getSalaris() {
@@ -121,6 +140,30 @@ public class Gebruiker {
 		this.actief = actief;
 	}
 	
+	public String getOrganisatie() {
+		return organisatie;
+	}
+
+	public void setOrganisatie(String organisatie) {
+		this.organisatie = organisatie;
+	}
+
+	public String getAfdeling() {
+		return afdeling;
+	}
+
+	public void setAfdeling(String afdeling) {
+		this.afdeling = afdeling;
+	}
+
+	public String getRol() {
+		return rol;
+	}
+
+	public void setRol(String rol) {
+		this.rol = rol;
+	}
+
 	// deze methode print alle gegevens uit van de gebruiker
 	@Override
 	public String toString() {

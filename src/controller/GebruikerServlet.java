@@ -50,45 +50,8 @@ public class GebruikerServlet extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		/*
-		 * // test dataBase
-		
-		// setup writer
-		PrintWriter out = response.getWriter();
-		
-		// setup JDBC objects
-		Connection myConn = null;
-		Statement myStmt = null;
-		ResultSet myRs = null;
-		 */
-		
-		
-		
 				
 		try{
-			/*
-			 * 
-			// setup connection
-			myConn = dataSource.getConnection();
-			
-			// statement
-			String sql = "select * from gebruiker";
-			myStmt = myConn.createStatement();
-			
-			// execute statement
-			myRs = myStmt.executeQuery(sql);
-			
-			//process resultSet
-			while(myRs.next()){
-				String voorNaam = myRs.getString("voor_naam");
-				String achterNaam = myRs.getString("achter_naam");
-				String email = myRs.getString("email");
-				
-				out.println(voorNaam + " " + achterNaam + " " + email);
-			}
-			
-			 */
-			
 			//get and print List
 			lijst(request, response);
 			

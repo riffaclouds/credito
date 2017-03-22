@@ -58,14 +58,12 @@
 	<div id="menuBar">
 		<ul>
 			<li class="menuItems"><a href="/credito">Home</a></li>
-			<li class="menuItems"><a href="/credito">Organisaties</a></li>
+			<li class="menuItems"><a href="organisatie">Organisaties</a></li>
 			<li class="menuItems"><a href="gebruiker">Gebruikers</a></li>
 			<li class="menuItems"><a href="/credito">Veilig betalen</a></li>
 			<li class="menuItems"><a href="/credito">Mijn Credito</a></li>
 		</ul>
 	</div>
-	<a href="/databasePlayground/">Mijn Credito</a>
-	
 	<hr>
 
 	
